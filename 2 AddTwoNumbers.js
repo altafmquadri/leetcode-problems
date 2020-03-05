@@ -58,4 +58,4 @@ const addTwoNumbers = (l1, l2) => {
     return dummyNode.next //we advance the pointer to get rid of dummy node
 }
 
-console.log(addTwoNumbers(l1, l2))
+console.log(addTwoNumbers(l1, l2)) // 7 -> 0 -> 8
