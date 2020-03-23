@@ -25,9 +25,13 @@ const findMedianSortedArrays = (nums1, nums2) => {
         let i = 0, j = 0
         let mergedArray = []
         while (i + j < n.length + m.length) {
+            //if nth item is smaller
             if (n[i] < m[j]) mergedArray.push(n[i]), i++
+            //if mth item is smaller
             if (n[i] > m[j]) mergedArray.push(m[j]), j++
+            //if values are equal
             if (n[i] === m[j]) mergedArray.push(n[i], m[j]), i++, j++
+            //if arrays are not of equal size
             if (i === n.length) mergedArray.push(m[j]), j++
             if (j === m.length) mergedArray.push(n[i]), i++
         }
@@ -47,13 +51,14 @@ const findMedianSortedArrays = (nums1, nums2) => {
     else {
         index1 = Math.floor((combinedArray.length - 1) / 2)
         index2 = Math.ceil((combinedArray.length - 1) / 2)
-        console.log(index1, index2)
         //  to get upper bound take ceil add both values and divide by two to get the median
         median = (combinedArray[index1] + combinedArray[index2]) / 2
     }
     return median
 }
 
+console.log(findMedianSortedArrays([1, 2], [3, 4])) //2.5
+console.log(findMedianSortedArrays([1, 3], [2])) //2
+
+
 // console.log(merge([1, 2], [3, 4]))
-console.log(findMedianSortedArrays([1, 2], [3, 4]))
-console.log(findMedianSortedArrays([1, 3], [2]))
