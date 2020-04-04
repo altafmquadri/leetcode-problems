@@ -1,56 +1,35 @@
 /* 
-Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
+Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.
 
-Example:
+Do not allocate extra space for another array, you must do this by modifying the input array in-place with O(1) extra memory.
 
-Input: 1->2->4, 1->3->4
-Output: 1->1->2->3->4->4
- */
+Example 1:
 
-class ListNode {
-    constructor(val) {
-        this.val = val
-        this.next = null
-    }
-}
+Given nums = [1,1,2],
 
-const mergeTwoLists = (l1, l2) => {
-    let newNode = new ListNode('dummy')
-    let current = newNode
+Your function should return length = 2, with the first two elements of nums being 1 and 2 respectively.
 
-    while (l1 && l2) {
-        if (l1.val < l2.val) {
-            current.next = l1
-            l1 = l1.next
-        } else {
-            current.next = l2
-            l2 = l2.next
+It doesn't matter what you leave beyond the returned length.
+Example 2:
+
+Given nums = [0,0,1,1,1,2,2,3,3,4],
+
+Your function should return length = 5, with the first five elements of nums being modified to 0, 1, 2, 3, and 4 respectively.
+
+It doesn't matter what values are set beyond the returned length. */
+
+const removeDuplicates = nums => {
+    if (!nums.length) return 0
+    let i = 0
+    for (let j = 1; j < nums.length; j++) {
+        if (nums[i] !== nums[j]) {
+            i++
+            nums[i] = nums[j]
         }
-        current = current.next
     }
-
-    while (l1) {
-        current.next = l1
-        l1 = l1.next
-        current = current.next
-    }
-
-    while (l2) {
-        current.next = l2
-        l2 = l2.next
-        current = current.next
-    }
-
-    return newNode.next
+    return i + 1
 }
 
-
-let l1 = new ListNode(1)
-l1.next = new ListNode(2)
-l1.next.next = new ListNode(4)
-let l2 = new ListNode(1)
-l2.next = new ListNode(3)
-l2.next.next = new ListNode(4)
-
-
-console.log(mergeTwoLists(l1, l2)) //1->1->2->3->4->4
+console.log(removeDuplicates([1, 1, 2])) //2
+console.log(removeDuplicates([])) //0
+console.log(removeDuplicates([0, 0, 1, 1, 1, 2, 2, 3, 3, 4])) //5
