@@ -28,9 +28,9 @@ const strStr = (haystack, needle) => {
     return -1
 }
 
-console.log(strStr('hello', 'll'))
-console.log(strStr('aaaaa', 'bba'))
-console.log(strStr("mississippi", "issip"))
-console.log(strStr("mississippi", "issipi"))
-console.log(strStr("mississippi", "pi"))
-console.log(strStr("mississippi", "sip"))
+console.log(strStr('hello', 'll')) //2
+console.log(strStr('aaaaa', 'bba')) //-1
+console.log(strStr("mississippi", "issip")) //4
+console.log(strStr("mississippi", "issipi"))//-1
+console.log(strStr("mississippi", "pi"))//9
+console.log(strStr("mississippi", "sip")) //6
