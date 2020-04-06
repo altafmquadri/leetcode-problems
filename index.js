@@ -1,55 +1,25 @@
 /* 
-Given a sorted array and a target value, return the index  the target is => found. If not, return the index where it would be if it were inserted in order.
-You may assume no duplicates in the array.
+Given an integer array nums, find the contiguous subarray (containing at least one number) which has the largest sum and return its sum.
 
-Example 1:
+Example:
 
-Input: [1,3,5,6], 5
-Output: 2
-Example 2:
+Input: [-2,1,-3,4,-1,2,1,-5,4],
+Output: 6
+Explanation: [4,-1,2,1] has the largest sum = 6.
+Follow up:
 
-Input: [1,3,5,6], 2
-Output: 1
-Example 3:
-
-Input: [1,3,5,6], 7
-Output: 4
-Example 4:
-
-Input: [1,3,5,6], 0
-Output: 0
+If you have figured out the O(n) solution, try coding another solution using the divide and conquer approach, which is more subtle.
 */
 
-//binary search
-const searchInsert = (nums, target) => {
-    let left = 0
-    let right = nums.length - 1
-    let mid
-    while (left <= right) {
-        mid = Math.floor((left + right) / 2)
+const maxSubArray = nums => {
+    let sum = nums[0]
+    let max = nums[0]
 
-        if (target === nums[mid]) return mid
-        else if (target < nums[mid]) right = mid - 1
-        else {
-            left = mid + 1
-        }
+    for (let i = 1; i < nums.length; i++) {
+        sum = Math.max(sum + nums[i], nums[i])
+        max = Math.max(max, sum)
     }
-    return left
+    return max
 }
 
-
-//linear search
-// const searchInsert = (nums, target) => {
-//     let right = 0
-//     for (let i = 0; i < nums.length; i++) {
-//         if (target === nums[i]) return i
-//         if (target > nums[i] && right < nums.length) right++
-//     }
-//     return right
-// }
-
-
-console.log(searchInsert([1, 3, 5, 6], 5)) //2
-console.log(searchInsert([1, 3, 5, 6], 2)) //1
-console.log(searchInsert([1, 3, 5, 6], 7)) //4
-console.log(searchInsert([1, 3, 5, 6], 0)) //0
+console.log(maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]));
