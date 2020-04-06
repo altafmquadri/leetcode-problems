@@ -28,7 +28,7 @@ const climbStairs = (n, memo = {}) => {
     if (!(n in memo)) return memo[n] = climbStairs(n - 1, memo) + climbStairs(n - 2, memo)
 }
 
-console.log(climbStairs(2))
-console.log(climbStairs(3))
-console.log(climbStairs(5))
-console.log(climbStairs(37))
+console.log(climbStairs(2)) //2
+console.log(climbStairs(3)) //3
+console.log(climbStairs(5)) //8
+console.log(climbStairs(37)) //39088169
