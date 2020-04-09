@@ -100,7 +100,6 @@ tree3.left = new TreeNode(2)
 tree3.right = new TreeNode(2)
 
 //example 5
-//example 1
 const tree4 = new TreeNode('A')
 tree4.left = new TreeNode('B')
 tree4.right = new TreeNode('B')
