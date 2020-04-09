@@ -111,9 +111,9 @@ tree4.left.right = new TreeNode('D')
 tree4.right.left = new TreeNode('D')
 tree4.right.right = new TreeNode('C')
 
-// console.log(isSymmetric(tree1));
-// console.log(isSymmetric(tree2));
-// console.log(isSymmetric(tree3));
+console.log(isSymmetric(tree1));
+console.log(isSymmetric(tree2));
+console.log(isSymmetric(tree3));
 console.log(isSymmetric(tree4));
 
 
