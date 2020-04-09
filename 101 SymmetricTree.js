@@ -44,34 +44,45 @@ const isSymmetric = root => {
 }
 
 //iterative
-// const isSymmetric = root => {
-//     if (!root) return true
-//     let stackP = []
-//     let stackQ = []
-//     let currentP = root
-//     let currentQ = root
+/* function serialize(arr) {
+    return arr.map(e => e.val).join(",");
+}
 
-//     while ((currentP && currentQ) || (stackP.length && stackQ.length)) {
-//         while (currentP) {
-//             stackP.push(currentP)
-//             currentP = currentP.left
-//         }
+const isSymmetric = (root) => {
+    if (!root) return true;
+    let stackP = [];
+    let stackQ = [];
+    let currentP = root;
+    let currentQ = root;
 
-//         while (currentQ) {
-//             stackQ.push(currentQ)
-//             currentQ = currentQ.right
-//         }
+    while ((currentP && currentQ) || (stackP.length && stackQ.length)) {
+        while (currentP) {
+            stackP.push(currentP);
+            console.log(`Pushing ${currentP.val} to sP=[${serialize(stackP)}]`)
+            currentP = currentP.left;
+        }
+        while (currentQ) {
+            stackQ.push(currentQ);
+            console.log(`Pushing ${currentQ.val} to sQ=[${serialize(stackQ)}]`)
+            currentQ = currentQ.right;
+        }
 
-//         currentP = stackP.pop()
-//         currentQ = stackQ.pop()
+        currentP = stackP.pop();
+        currentQ = stackQ.pop();
 
-//         if ((currentP.val !== currentQ.val) || (stackP.length !== stackQ.length)) return false
+        console.log(`Comparing cP=${currentP.val} cQ=${currentQ.val} sP=[${serialize(stackP)}] sQ=[${serialize(stackQ)}]`);
 
-//         currentP = currentP.right
-//         currentQ = currentQ.left
-//     }
-//     return true
-// }
+        if (currentP.val !== currentQ.val || stackP.length !== stackQ.length)
+            return false;
+
+        // confused as to why we are setting it to the opposite here
+        currentP = currentP.right;
+        currentQ = currentQ.left;
+
+        console.log(`Looping   cP=${currentP ? currentP.val : "null"} cQ=${currentQ ? currentQ.val : "null"} sP=[${serialize(stackP)}] sQ=[${serialize(stackQ)}]`);
+    }
+    return true;
+} */
 
 
 //example 1
