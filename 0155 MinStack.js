@@ -18,18 +18,21 @@ minStack.getMin();   --> Returns -2. */
 class MinStack {
     constructor() {
         this.values = []
+        this.minimums = []
     }
     push(val) {
         this.values.push(val)
+        if (!this.minimums.length) this.minimums.push(val)
+        else this.minimums.push(Math.min(this.minimums.slice(-1)[0], val))
     }
     pop() {
-        return this.values.length ? this.values.pop() : null
+        return this.values.length ? (this.values.pop(), this.minimums.pop()) : null
     }
     top() {
         return this.values.length ? this.values[this.values.length - 1] : null
     }
     getMin() {
-        return Math.min(...this.values)
+        return this.minimums.slice(-1)[0]
     }
 }
 
