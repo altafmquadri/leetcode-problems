@@ -20,7 +20,6 @@ const countPrimes = n => {
         }
     }
     return results.filter(val => val === true).length
-
 }
 
 console.log(countPrimes(10)) //4
