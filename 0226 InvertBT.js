@@ -20,7 +20,6 @@ This problem was inspired by this original tweet by Max Howell:
 
 Google: 90% of our engineers use the software you wrote (Homebrew), but you can’t invert a binary tree on a whiteboard so f*** off */
 
-
 class TreeNode {
     constructor(val) {
         this.val = val;
@@ -34,11 +33,13 @@ const invertTree = root => {
     let temp
     while (queue.length) {
         current = queue.shift()
-        temp = current.left
-        current.left = current.right
-        current.right = temp
-        if (current.left) queue.push(current.left)
-        if (current.right) queue.push(current.right)
+        if (current !== null) {
+            temp = current.left
+            current.left = current.right
+            current.right = temp
+            if (current.left) queue.push(current.left)
+            if (current.right) queue.push(current.right)
+        }
     }
     return root
 }
