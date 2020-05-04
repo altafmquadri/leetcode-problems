@@ -73,6 +73,7 @@ console.log(findMode(tree4)) // [1]
 //     const hash = {}
 //     let current = root
 //     let result = []
+//     let keys
 
 //     const dfs = c => {
 //         if (!c) return
@@ -81,7 +82,9 @@ console.log(findMode(tree4)) // [1]
 //         if (c.right) dfs(c.right)
 //     }
 //     dfs(current)
-//     Object.keys(hash).reduce((a, b) => {
+//     keys = Object.keys(hash)
+//     if (keys.length <= 1) return [+keys]
+//     else keys.reduce((a, b) => {
 //         if (hash[a] === hash[b]) result.push(+a, +b)
 //         else if (hash[a] > hash[b]) {
 //             result.push(+a)
