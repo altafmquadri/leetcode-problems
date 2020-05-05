@@ -28,6 +28,7 @@ class TreeNode {
         this.right = (right === undefined ? null : right)
     }
 }
+
 const findMode = root => {
     let mode = [],
         prev,
@@ -65,8 +66,43 @@ console.log(findMode(tree2)) //[1,2]
 console.log(findMode(tree3))//[2147483647]
 console.log(findMode(tree4)) // [1]
 
+//working
+// const findMode = root => {
+//     if (!root) return []
+//     if (root && !root.left && !root.right) return [root.val]
+//     const hash = {}
+//     let current = root
+//     let result = []
+//     let keys
 
+//     const dfs = c => {
+//         if (!c) return
+//         if (c.left) dfs(c.left)
+//         hash[c.val] = (hash[c.val] || 0) + 1
+//         if (c.right) dfs(c.right)
+//     }
+//     dfs(current)
 
+//     keys = Object.keys(hash);
+//     keys.sort((a, b) => hash[b] - hash[a]);
+//     keys.forEach(key => {
+//         if (hash[key] === hash[keys[0]]) result.push(+key);
+//     })
+//     return result
+// }
+
+//extracted
+// keys = Object.keys(hash)
+    // if (keys.length <= 1) return [+keys]
+    // else keys.reduce((a, b) => {
+    //     if (hash[a] === hash[b]) result.push(+a, +b)
+    //     else if (hash[a] > hash[b]) {
+    //         result.push(+a)
+    //     } else result.push(+b)
+    // })
+    // return result
+
+//non-working
 // const findMode = root => {
 //     if (!root) return []
 //     if (root && !root.left && !root.right) return [root.val]
