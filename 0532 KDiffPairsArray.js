@@ -21,9 +21,8 @@ The length of the array won't exceed 10,000.
 All the integers in the given input belong to the range: [-1e7, 1e7]. */
 
 const findPairs = (nums, k) => {
-    let count = 0
     if (k < 0) return 0
-
+    let count = 0
     const hash = {}
 
     for (let num of nums) {
@@ -35,6 +34,7 @@ const findPairs = (nums, k) => {
             if (hash[key] > 1) count++
         } else if (hash[+key + k]) count++
     })
+
     return count
 }
 
@@ -63,9 +63,9 @@ console.log(findPairs([-1, -2, -3], 1)) //2
 //         let numSet = new Set(nums)
 //         nums = Array.from(numSet)
 //         for (let num of nums) {
-//             if (numSet.has(Math.abs(num + k))) {
+//             if (numSet.has((num + k))) {
 //                 count++
-//                 numSet.delete(Math.abs(num + k))
+//                 numSet.delete((num + k))
 //             }
 
 //         }
