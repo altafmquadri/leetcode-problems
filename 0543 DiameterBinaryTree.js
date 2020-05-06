@@ -24,15 +24,17 @@ class TreeNode {
 }
 
 const diameterOfBinaryTree = (root) => {
+    //initialize count
     let count = 0
-
+    //recurse dfs post order
     const dfs = (c) => {
         if (!c) return 0
-
         let left = dfs(c.left)
         let right = dfs(c.right)
+        //add up the nodes and return the max
         count = Math.max(count, left + right)
-        return 1 + Math.max(left, right)
+        //add one to each level iterated
+        return Math.max(left + 1, right + 1)
     }
     dfs(root)
     return count
