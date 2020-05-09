@@ -79,7 +79,8 @@ const tree2 = new Node(1,
             [new Node(12)])]),
     new Node(5,
         [new Node(9,
-            [new Node(13)]), new Node(10)])])
+            [new Node(13)]),
+        new Node(10)])])
 
 console.log(maxDepth(tree)) //3
 console.log(maxDepth(tree2)) //5
