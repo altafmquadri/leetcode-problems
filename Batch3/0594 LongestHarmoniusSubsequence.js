@@ -44,29 +44,3 @@ console.log(findLHS([1, 2, 2, 1])) //4
 //     }
 //     return count
 // }
-
-
-//different question where trying to find actual array
-// const findLHS = (nums) => {
-//     const hash = new Map()
-//     let vals = []
-//     let min = nums[0], max = nums[0]
-//     for (let num of nums) {
-//         //logic for finding min and max in range is flawed
-//         min = min + max === 1 && min < max ? min : Math.min(min, num)
-//         max = max - min === 1 && max > min ? max : Math.max(max, num)
-//         hash.set(num, (hash.get(num) || 0) + 1)
-//         console.log(max);
-//     }
-
-//     //logic is flawed below
-//     for (let key of nums) {
-//         // if (hash.has(key + 1) && hash.has(key + 1) <= max) {
-//         //     vals.push(hash.get(key + 1))
-//         // }
-//         if (hash.has(key) === min || hash.has(key) === max) {
-//             vals.push(min) || vals.push(max)
-//         }
-//     }
-//     return vals
-// }
