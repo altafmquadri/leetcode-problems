@@ -57,6 +57,65 @@ console.log(tree2str(tree3)) // "1(2(3)(4))" instead got "1(2(3))(4)"
 
 
 
+
+
+//other working solutions
+
+// const tree2str = (tree) => {
+
+//   const dfs = (current) => {
+//       if (current === null) return ''
+
+//       let result = current.val.toString(); // in fact you don't need toString() here, but has a better readability
+
+//       const left = current.left
+//       const right = current.right
+
+//       if (left || right) {
+//           result += '(' + dfs(left) + ')'
+//       } 
+//       if (right) {
+//           result += '(' + dfs(right) + ')'
+//       }
+//       return result
+//   }
+//   return dfs(tree)
+// }
+
+// const tree2str = t => {
+//   const result = []
+//   const dfs = current => {
+//     if (!current) {
+//       return
+//     }
+
+//     const { val, left, right } = current
+//     if (val !== null && val !== undefined) {
+//       result.push(val)
+//       if (left) {
+//         result.push("(")
+//         dfs(left)
+//         result.push(")")
+//       } else if (!left && right) {
+//         result.push("()")
+//       }
+
+//       if (right) {
+//         result.push("(")
+//         dfs(right)
+//         result.push(")")
+//       }
+//     }
+//   }
+//   dfs(t)
+//   return result.join("")
+// }
+
+
+
+
+//----------------------------------------------------------------------------
+//non working solutions
 // const tree2str = (t) => {
 //     const result = []
 //     const stack = []

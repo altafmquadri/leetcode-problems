@@ -25,6 +25,6 @@ const reverse = x => {
     return reversed >= Math.pow(2, 31) || reversed <= -Math.pow(2, 31) ? 0 : reversed
 }
 
-console.log(reverse(120))
-console.log(reverse(123))
-console.log(reverse(-123))
+console.log(reverse(120)) //21
+console.log(reverse(123)) //321
+console.log(reverse(-123)) //-321
