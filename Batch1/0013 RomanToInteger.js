@@ -50,36 +50,31 @@ const romanToInt = s => {
         'D': 500,
         'M': 1000,
     }
+    let result = []
 
-    let letters = s.split('')
-    let val
-    let numbers = []
+    for (let [i, val] of s.split('').entries()) {
+        //if value is not the first then check to see if following conditions hold, if so pop that number off and add the new number, and subtotal values
 
-    for (let i = 0; i < letters.length; i++) {
-        val = letters[i]
-        if ((val === 'V' || val === 'X') && i !== 0 && letters[i - 1] === 'I') {
-            numbers.pop()
-            numbers.push(romanNumerals[val] - romanNumerals[letters[i - 1]])
-        }
-        else if ((val === 'L' || val === 'C') && i !== 0 && letters[i - 1] === 'X') {
-            numbers.pop()
-            numbers.push(romanNumerals[val] - romanNumerals[letters[i - 1]])
-        }
-        else if ((val === 'D' || val === 'M') && i !== 0 && letters[i - 1] === 'C') {
-            numbers.pop()
-            numbers.push(romanNumerals[val] - romanNumerals[letters[i - 1]])
-        }
+        if ((val === 'V' || val === 'X') && i !== 0 && s[i - 1] === 'I')
+            result.pop(),
+                result.push(romanNumerals[val] - romanNumerals[s[i - 1]])
 
-        else {
-            numbers.push(romanNumerals[val])
-        }
+        else if ((val === 'L' || val === 'C') && i !== 0 && s[i - 1] === 'X')
+            result.pop(),
+                result.push(romanNumerals[val] - romanNumerals[s[i - 1]])
+
+        else if ((val === 'D' || val === 'M') && i !== 0 && s[i - 1] === 'C')
+            result.pop(),
+                result.push(romanNumerals[val] - romanNumerals[s[i - 1]])
+
+        else result.push(romanNumerals[val])
     }
-    return numbers.reduce((acc, n) => acc + n, 0)
+    return result.reduce((sum, n) => sum + n, 0)
 }
-
 
 console.log(romanToInt("III")) //3
 console.log(romanToInt("IV")) //4
-console.log(romanToInt("IX")) //9 
+console.log(romanToInt("IX")) //9
+console.log(romanToInt("XL")) //40
 console.log(romanToInt("LVIII")) //58
 console.log(romanToInt("MCMXCIV")) //1994

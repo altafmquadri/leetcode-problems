@@ -36,7 +36,21 @@ const longestCommonPrefix = strs => {
 
 console.log(longestCommonPrefix(["flower", "flow", "flight"])) //fl
 console.log(longestCommonPrefix(["dog", "racecar", "car"])) // ''
+console.log(longestCommonPrefix([])) // ''
+console.log(longestCommonPrefix(['aca', 'cba'])) // ''
 
+
+// const longestCommonPrefix = strs => {
+//     if (!strs.length) return ''
+//     strs.sort((a, b) => a.length - b.length)
+//     let prefix = ''
+//     for (let i = 0; i < strs[0].length; i++) {
+//         let letter = strs[0][i]
+//         if (strs.every(word => word[i] === letter)) prefix += letter
+//         else break
+//     }
+//     return prefix
+// }
 
 /* alterante solution using reduce not mine
 var longestCommonPrefix = function(strs) {
