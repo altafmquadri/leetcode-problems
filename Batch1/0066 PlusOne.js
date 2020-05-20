@@ -29,10 +29,23 @@ const plusOne = digits => {
     return [1, ...digits]
 }
 
+console.log(plusOne([1, 2, 3])) //124
+console.log(plusOne([4, 3, 2, 1])) //4322
+console.log(plusOne([4, 3, 2, 9])) //4330
+console.log(plusOne([4, 9, 9, 9])) //5000
+console.log(plusOne([9, 9])) //100
 
 
-console.log(plusOne([1, 2, 3])) 
-console.log(plusOne([4, 3, 2, 1]))
-console.log(plusOne([4, 3, 2, 9]))
-console.log(plusOne([4, 9, 9, 9]))
-console.log(plusOne([9, 9]))
+// const plusOne = digits => {
+//     for (let i = digits.length - 1; i >= 0; i--) {
+//         //go to last number and if it's less than 9 add one and return 
+//         if (digits[i] < 9) {
+//             digits[i]++
+//             return digits
+//         }
+//         // if greater than 9 make that number zero, go back in the loop
+//         digits[i] = 0
+//     }
+//     //if all nines, then have 1 at the beginning of the array
+//     return [1, ...digits]
+// }

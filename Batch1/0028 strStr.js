@@ -14,16 +14,20 @@ Output: -1
 */
 
 const strStr = (haystack, needle) => {
-    if (needle === '') return 0
-
+    if (!needle.length) return 0
+    //iterate over the haystack to find the needle
     for (let i = 0, j = 0; i < haystack.length; i++) {
+        //if letters match
         if (haystack[i] === needle[j]) {
+            //and length of j reaches the end return i - j to get i starting index
             if (j === needle.length - 1) return i - j
-            j++
+            j++ //else we increment counter j
         } else {
-            i = i - j
-            j = 0
+            //re-index i 
+            i = i - j //to start at the character after the match in the beginning
+            j = 0 //restart js count to 0 to start the process over
         }
+        //if none match
     }
     return -1
 }

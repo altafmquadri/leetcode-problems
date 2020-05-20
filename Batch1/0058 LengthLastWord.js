@@ -18,6 +18,12 @@ const lengthOfLastWord = s => {
     return lastWord ? lastWord.length : 0
 }
 
+// const lengthOfLastWord = s => {
+//     let str = s.trim()
+//     if (!str.length) return 0
+//     return str.split(' ').filter(w => w !== '').slice(-1)[0].length
+// }
+
 console.log(lengthOfLastWord("Hello World")) //5
 console.log(lengthOfLastWord("a ")) //1
 console.log(lengthOfLastWord("    day ")) //3
