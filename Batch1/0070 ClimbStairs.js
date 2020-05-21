@@ -20,12 +20,19 @@ Explanation: There are three ways to climb to the top.
 */
 
 const climbStairs = (n, memo = {}) => {
-    if (memo[n] !== undefined) return memo[n]
+    if (n in memo) return memo[n]
     if (n <= 2) return n
-    if (!(n in memo)) return memo[n] = climbStairs(n - 1, memo) + climbStairs(n - 2, memo)
+    return memo[n] = climbStairs(n - 1, memo) + climbStairs(n - 2, memo)
 }
 
 console.log(climbStairs(2)) //2
 console.log(climbStairs(3)) //3
 console.log(climbStairs(5)) //8
 console.log(climbStairs(37)) //39088169
+
+
+// const climbStairs = (n, memo = {}) => {
+//     if (memo[n] !== undefined) return memo[n]
+//     if (n <= 2) return n
+//     if (!(n in memo)) return memo[n] = climbStairs(n - 1, memo) + climbStairs(n - 2, memo)
+// }

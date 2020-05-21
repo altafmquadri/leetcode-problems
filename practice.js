@@ -1,29 +1,22 @@
 /* 
-You are climbing a stair case. It takes n steps to reach to the top.
-Each time you can either climb 1 or 2 steps. In how many distinct ways can you climb to the top?
-Note: Given n will be a positive integer.
+Given two sorted integer arrays nums1 and nums2, merge nums2 into nums1 as one sorted array.
 
-Example 1:
-Input: 2
-Output: 2
-Explanation: There are two ways to climb to the top.
-1. 1 step + 1 step
-2. 2 steps
+Note:
 
-Example 2:
-Input: 3
-Output: 3
-Explanation: There are three ways to climb to the top.
-1. 1 step + 1 step + 1 step
-2. 1 step + 2 steps
-3. 2 steps + 1 step
+The number of elements initialized in nums1 and nums2 are m and n respectively.
+You may assume that nums1 has enough space (size that is greater or equal to m + n) to hold additional elements from nums2.
+Example:
+
+Input:
+nums1 = [1,2,3,0,0,0], m = 3
+nums2 = [2,5,6],       n = 3
+
+Output: [1,2,2,3,5,6]
 */
 
-const climbStairs = (n) => {
 
+const merge = (nums1, m, nums2, n) => {
+    
 }
 
-console.log(climbStairs(2)) //2
-console.log(climbStairs(3)) //3
-console.log(climbStairs(5)) //8
-// console.log(climbStairs(37)) //39088169
+console.log(merge([1, 2, 3, 0, 0, 0], 3, [2, 5, 6], 3));
