@@ -21,6 +21,7 @@ But the following [1,2,2,null,3,null,3] is not:
 
 Note:
 Bonus points if you could solve it both recursively and iteratively.
+https://youtu.be/3iIpnouY-bg
 */
 
 
@@ -121,9 +122,71 @@ tree4.left.right = new TreeNode('D')
 tree4.right.left = new TreeNode('D')
 tree4.right.right = new TreeNode('C')
 
-console.log(isSymmetric(tree1));
-console.log(isSymmetric(tree2));
-console.log(isSymmetric(tree3));
-console.log(isSymmetric(tree4));
+console.log(isSymmetric(tree1))//true
+console.log(isSymmetric(tree2))//false
+console.log(isSymmetric(tree3))//true
+console.log(isSymmetric(tree4))//true
+
+
+// recursive
+// const isSymmetric = root => {
+//     if (!root) return true
+//     const isMirror = (p, q) => {
+//         if (!p && !q) return true
+//         if (!p || !q) return false
+//         if (p.val !== q.val) return false
+//         return isMirror(p.left, q.right) && isMirror(q.left, p.right)
+//     }
+//     return isMirror(root.left, root.right)
+// }
+
+//iterative
+/* const serialize = (arr) => {
+    return arr.map(node => node.val).join(',')
+}
+
+
+const isSymmetric = (root) => {
+    //declare the stacks and current values
+    const stackP = []
+    const stackQ = []
+    let currentP = root
+    let currentQ = root
+
+    while (currentP && currentQ || stackP.length && stackQ.length) {
+        while (currentP) {
+            stackP.push(currentP)
+            console.log(`Puhsing ${currentP.val} onto StackP=[${serialize(stackP)}]`);
+            currentP = currentP.left
+        }
+        while (currentQ) {
+            stackQ.push(currentQ)
+            console.log(`Puhsing ${currentQ.val} onto StackQ=[${serialize(stackQ)}]`);
+            currentQ = currentQ.right
+        }
+        //pop off values compare values and lengths
+        currentP = stackP.pop()
+        currentQ = stackQ.pop()
+
+        console.log(`Compare after popping values:
+        currentP = ${currentP.val}, currentQ = ${currentQ.val}
+        stackP = [${serialize(stackP)}]
+        stackQ = [${serialize(stackQ)}]
+        `);
+
+        if (currentP.val !== currentQ.val || stackP.length !== stackQ.length) return false
+
+        //Take left's right child and right's left child and re-run while loop
+        currentP = currentP.right
+        currentQ = currentQ.left
+
+        console.log(`Looping to obtain all values of children
+        currentP = ${currentP ? currentP.val : 'null'}
+        currentQ = ${currentQ ? currentQ.val : 'null'}
+        stackP = [${serialize(stackP)}]
+        stackQ = [${serialize(stackQ)}]`);
+    }
+    return true
+} */
 
 
