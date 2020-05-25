@@ -1,34 +1,29 @@
 /*
 Given two binary trees, write a function to check if they are the same or not.
-
 Two binary trees are considered the same if they are structurally identical and the nodes have the same value.
 
 Example 1:
-
 Input:     1         1
           / \       / \
          2   3     2   3
 
         [1,2,3],   [1,2,3]
-
 Output: true
-Example 2:
 
+Example 2:
 Input:     1         1
           /           \
          2             2
 
         [1,2],     [1,null,2]
-
 Output: false
-Example 3:
 
+Example 3:
 Input:     1         1
           / \       / \
          2   1     1   2
 
         [1,2,1],   [1,1,2]
-
 Output: false
 */
 
@@ -81,7 +76,43 @@ const tree8 = new TreeNode(1)
 tree8.left = new TreeNode(1)
 tree8.right = new TreeNode(2)
 
-console.log(isSameTree(tree1, tree2))
-console.log(isSameTree(tree3, tree4))
-console.log(isSameTree(tree5, tree6))
-console.log(isSameTree(tree7, tree8))
+console.log(isSameTree(tree1, tree2)) //true 
+console.log(isSameTree(tree3, tree4)) //false
+console.log(isSameTree(tree5, tree6)) //false
+console.log(isSameTree(tree7, tree8)) //false
+
+
+//iterative solution i liked
+// var isSameTree = function (p, q) {
+//     let queueOne = [p];
+//     let queueTwo = [q];
+
+//     while (queueOne.length && queueTwo.length) {
+//         const currOne = queueOne.shift();
+//         const currTwo = queueTwo.shift();
+
+//         if (currOne && currTwo && currOne.val !== currTwo.val) {
+//             return false;
+//         }
+
+//         if (currOne && !currTwo) {
+//             return false;
+//         }
+
+//         if (currTwo && !currOne) {
+//             return false;
+//         }
+
+//         if (currOne) {
+//             queueOne.push(currOne.left);
+//             queueOne.push(currOne.right);
+//         }
+
+//         if (currTwo) {
+//             queueTwo.push(currTwo.left);
+//             queueTwo.push(currTwo.right);
+//         }
+//     }
+
+//     return queueOne.length === 0 && queueTwo.length === 0;
+// };
