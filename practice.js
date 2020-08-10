@@ -1,28 +1,20 @@
 /* 
-Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
+Given a binary tree, find its maximum depth.
+The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
+Note: A leaf is a node with no children.
 
-For example, this binary tree [1,2,2,3,4,4,3] is symmetric:
-
-    1
+Example:
+Given binary tree [3,9,20,null,null,15,7],
+    3
    / \
-  2   2
- / \ / \
-3  4 4  3
- 
-
-But the following [1,2,2,null,3,null,3] is not:
-
-    1
-   / \
-  2   2
-   \   \
-   3    3
- 
-
-Note:
-Bonus points if you could solve it both recursively and iteratively.
+  9  20
+    /  \
+   15   7
+return its depth = 3.
+https://youtu.be/seaGHJFWNPs
+https://youtu.be/D2cFSDfg0So
+https://youtu.be/_O-mK2g_jhI most helpful
 */
-
 
 class TreeNode {
     constructor(val) {
@@ -31,107 +23,60 @@ class TreeNode {
     }
 }
 
-// recursive
-// const isSymmetric = root => {
-//     if (!root) return true
-//     const isMirror = (p, q) => {
-//         if (!p && !q) return true
-//         if (!p || !q) return false
-//         if (p.val !== q.val) return false
-//         return isMirror(p.left, q.right) && isMirror(q.left, p.right)
+//iterative
+// const maxDepth = root => {
+//     if (!root) return 0
+//     const queue = [root, 's']
+//     let count = 1, current
+
+//     while (queue.length > 1) {
+//         current = queue.shift()
+//         if (current === 's') {
+//             queue.push('s')
+//             count++
+//         }
+
+//         if (current.left) queue.push(current.left)
+//         if (current.right) queue.push(current.right)
 //     }
-//     return isMirror(root.left, root.right)
+//     return count
 // }
 
-//iterative
-const serialize = (arr) => {
-    return arr.map(node => node.val).join(',')
+
+//recursive
+const maxDepth = root => {
+    //this is our base case we reach the null child we're at 0
+    if (root === null) return 0
+    let left = maxDepth(root.left)
+    let right = maxDepth(root.right)
+    let depth
+    //compare left and right return depth to the next call
+    if (left > right) depth = 1 + left
+    else depth = 1 + right
+    return depth
 }
 
 
-const isSymmetric = (root) => {
-    //declare the stacks and current values
-    const stackP = []
-    const stackQ = []
-    let currentP = root
-    let currentQ = root
+const tree1 = new TreeNode(3)
+tree1.left = new TreeNode(9)
+tree1.right = new TreeNode(20)
 
-    while (currentP && currentQ || stackP.length && stackQ.length) {
-        while (currentP) {
-            stackP.push(currentP)
-            // console.log(`Puhsing ${currentP.val} onto StackP=[${serialize(stackP)}]`);
-            currentP = currentP.left
-        }
-        while (currentQ) {
-            stackQ.push(currentQ)
-            // console.log(`Puhsing ${currentQ.val} onto StackQ=[${serialize(stackQ)}]`);
-            currentQ = currentQ.right
-        }
-        //pop off values compare values and lengths
-        currentP = stackP.pop()
-        currentQ = stackQ.pop()
+tree1.right.left = new TreeNode(15)
+tree1.right.right = new TreeNode(7)
 
-        // console.log(`Compare after popping values:
-        // currentP = ${currentP.val}, currentQ = ${currentQ.val}
-        // stackP = [${serialize(stackP)}]
-        // stackQ = [${serialize(stackQ)}]
-        // `);
-
-        if (currentP.val !== currentQ.val || stackP.length !== stackQ.length) return false
-
-        //Take left's right child and right's left child and re-run while loop
-        currentP = currentP.right
-        currentQ = currentQ.left
-
-        // console.log(`Looping to obtain all values of children
-        // currentP = ${currentP ? currentP.val : 'null'}
-        // currentQ = ${currentQ ? currentQ.val : 'null'}
-        // stackP = [${serialize(stackP)}]
-        // stackQ = [${serialize(stackQ)}]`);
-    }
-    return true
-}
+console.log(maxDepth(tree1));
 
 
-//example 1
-const tree1 = new TreeNode(1)
-tree1.left = new TreeNode(2)
-tree1.right = new TreeNode(2)
+//nice recursive solution I found
+/* const maxDepth = (root, depth = 0) => {
+    if (!root) return depth;
+    return Math.max(maxDepth(root.left, depth + 1), maxDepth(root.right, depth + 1));
+} */
 
-tree1.left.left = new TreeNode(3)
-tree1.left.right = new TreeNode(4)
-
-tree1.right.left = new TreeNode(4)
-tree1.right.right = new TreeNode(3)
-
-//example 2
-const tree2 = new TreeNode(1)
-tree2.left = new TreeNode(2)
-tree2.right = new TreeNode(2)
-
-tree2.left.right = new TreeNode(3)
-
-tree2.right.right = new TreeNode(3)
-
-//example 4
-const tree3 = new TreeNode(1)
-tree3.left = new TreeNode(2)
-tree3.right = new TreeNode(2)
-
-//example 5
-const tree4 = new TreeNode('A')
-tree4.left = new TreeNode('B')
-tree4.right = new TreeNode('B')
-
-tree4.left.left = new TreeNode('C')
-tree4.left.right = new TreeNode('D')
-
-tree4.right.left = new TreeNode('D')
-tree4.right.right = new TreeNode('C')
-
-console.log(isSymmetric(tree1))// true
-console.log(isSymmetric(tree2))//false
-console.log(isSymmetric(tree3))//true
-console.log(isSymmetric(tree4))//true
-
-
+// const maxDepth = root => {
+    //     //this is our base case we reach the null child we're at 0
+    //     if (root === null) return 0
+    //     let left = maxDepth(root.left)
+    //     let right = maxDepth(root.right)
+    //     return Math.max(left + 1, right + 1)
+    // }
